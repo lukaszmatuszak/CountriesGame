@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { Text, SafeAreaView, Button } from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, SafeAreaView, Button, AsyncStorage } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/linssen/country-flag-icons/master/countries.json')
+      .then(response => response.json())
+      .then(data => {
+        AsyncStorage.setItem('@countries', JSON.stringify(data));
+      });
+  }, []);
+
   return (
     <SafeAreaView>
       <Text>Countries Game</Text>
