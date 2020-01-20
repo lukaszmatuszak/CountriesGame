@@ -1,7 +1,7 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import GameScreen from '../screens/HomeScreen/GameScreen';
-import SummaryScreen from '../screens/HomeScreen/SummaryScreen';
+import GameScreen from '../screens/GameScreen/GameScreen';
+import SummaryScreen from '../screens/SummaryScreen/SummaryScreen';
 
 const Navigation = createAppContainer(
   createSwitchNavigator(
