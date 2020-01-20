@@ -1,10 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 
-const SummaryScreen = () => {
+const SummaryScreen = ({ navigation }) => {
   return (
     <View>
-      <Text>Summary Screen</Text>
+      <Text>Summary Screen{navigation.getParam('score')}</Text>
+      <Text>Score:{navigation.getParam('score')}/10</Text>
+      <Button
+        title="Play again"
+        onPress={() => {
+          navigation.navigate('Game');
+        }}
+      />
     </View>
   );
 };

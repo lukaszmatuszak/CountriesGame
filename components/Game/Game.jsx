@@ -24,34 +24,35 @@ const Game = ({ pairs, navigation }) => {
       setIndex(i => i + 1);
     } else {
       Alert.alert('Incorrect', 'Game Over');
-      navigation.navigate('Home');
+      navigation.navigate('Summary', { score: index });
     }
   };
 
   const handleSwipeRight = () => {
-    if (!pairs[index].correct) {
+    if (pairs[index].correct) {
       Alert.alert('Correct');
       setIndex(i => i + 1);
     } else {
       Alert.alert('Incorrect', 'Game Over');
-      navigation.navigate('Home');
+      navigation.navigate('Summary', { score: index });
     }
   };
 
-  if (index >= 9) {
-    navigation.navigate('Home');
+  if (index >= 10) {
+    navigation.navigate('Summary', { score: index });
     return null;
   }
 
-  if (timer > 3) {
-    Alert.alert("Time's up!");
-    navigation.navigate('Home');
-    return null;
-  }
+  // if (timer > 3) {
+  //   Alert.alert("Time's up!");
+  //   navigation.navigate('Summary', { score: index });
+  //   return null;
+  // }
 
   return (
     <View>
       <Text>Timer:{timer}</Text>
+      <Text>Score:{index}/10</Text>
       <Pair onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight} pair={pairs[index]} />
     </View>
   );

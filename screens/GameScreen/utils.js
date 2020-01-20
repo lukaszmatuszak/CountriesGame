@@ -1,7 +1,7 @@
 const getRandomNumber = max => Math.floor(Math.random() * max);
 
 const getCorrectPair = countries => {
-  const random = getRandomNumber(10);
+  const random = getRandomNumber(3);
 
   return {
     name: countries[random].name,
@@ -15,8 +15,8 @@ const getIncorrectPair = countries => {
   let flagIndex = 0;
 
   do {
-    nameIndex = getRandomNumber(10);
-    flagIndex = getRandomNumber(10);
+    nameIndex = getRandomNumber(3);
+    flagIndex = getRandomNumber(3);
   } while (nameIndex === flagIndex);
 
   return {
