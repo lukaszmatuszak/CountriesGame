@@ -5,7 +5,8 @@ const getCorrectPair = countries => {
 
   return {
     name: countries[random].name,
-    flag: countries[random].file_url,
+    flagUrl: countries[random].file_url,
+    flagOwner: countries[random].name,
     correct: true
   };
 };
@@ -21,7 +22,8 @@ const getIncorrectPair = countries => {
 
   return {
     name: countries[nameIndex].name,
-    flag: countries[flagIndex].file_url,
+    flagUrl: countries[flagIndex].file_url,
+    flagOwner: countries[flagIndex].name,
     correct: false
   };
 };

@@ -12,6 +12,8 @@
     "eslint-plugin-react"
   ],
   "rules": {
+    "no-plusplus": "off",
+    "no-await-in-loop": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -20,6 +22,7 @@
     "react/sort-comp": [0],
     "react/destructuring-assignment": [0],
     "react/forbid-prop-types": [0],
+    "react/prop-types": [0],
     "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
     "quotes": [
       "error",

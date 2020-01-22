@@ -40,14 +40,12 @@ const Game = ({ pairs, navigation }) => {
 
   if (index >= 10) {
     navigation.navigate('Summary', { score: index });
-    return null;
   }
 
-  // if (timer > 3) {
-  //   Alert.alert("Time's up!");
-  //   navigation.navigate('Summary', { score: index });
-  //   return null;
-  // }
+  if (timer > 3) {
+    Alert.alert("Time's up!");
+    navigation.navigate('Summary', { score: index });
+  }
 
   return (
     <View>
