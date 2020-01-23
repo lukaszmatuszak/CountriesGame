@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Alert, View } from 'react-native';
+import { Text, Alert, View, StyleSheet, ToastAndroid } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import Pair from '../Pair/Pair';
@@ -21,20 +21,20 @@ const Game = ({ pairs, navigation }) => {
 
   const handleSwipeLeft = () => {
     if (!pairs[index].correct) {
-      Alert.alert('Correct');
+      ToastAndroid.show('Correct', ToastAndroid.SHORT);
       setIndex(i => i + 1);
     } else {
-      Alert.alert('Incorrect', 'Game Over');
+      ToastAndroid.show('Incorrect', ToastAndroid.SHORT);
       navigation.navigate('Summary', { score: index });
     }
   };
 
   const handleSwipeRight = () => {
     if (pairs[index].correct) {
-      Alert.alert('Correct');
+      ToastAndroid.show('Correct', ToastAndroid.SHORT);
       setIndex(i => i + 1);
     } else {
-      Alert.alert('Incorrect', 'Game Over');
+      ToastAndroid.show('Incorrect', ToastAndroid.SHORT);
       navigation.navigate('Summary', { score: index });
     }
   };
@@ -44,13 +44,13 @@ const Game = ({ pairs, navigation }) => {
   }
 
   if (timer > 3) {
-    Alert.alert("Time's up!");
+    Alert.alert("Time's up!", 'Be faster next time :)');
     navigation.navigate('Summary', { score: index });
   }
 
   return (
     <GestureRecognizer onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
-      <View style={{ zIndex: 1 }}>
+      <View style={styles.container}>
         <Text>Timer:{timer}</Text>
         <Text>Score:{index}/10</Text>
         <Pair pair={pairs[index]} />
@@ -58,5 +58,9 @@ const Game = ({ pairs, navigation }) => {
     </GestureRecognizer>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { zIndex: 1 }
+});
 
 export default withNavigation(Game);

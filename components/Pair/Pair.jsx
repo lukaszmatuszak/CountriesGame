@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Image from 'react-native-remote-svg';
 
 const Pair = ({ pair }) => {
@@ -8,7 +7,7 @@ const Pair = ({ pair }) => {
     <View>
       <Text>{pair.name}</Text>
       <Image
-        style={{ width: 300, height: 200, zIndex: 0 }}
+        style={styles.flagImage}
         source={{
           uri: pair.flagUrl
         }}
@@ -16,5 +15,9 @@ const Pair = ({ pair }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  flagImage: { width: 300, height: 200, zIndex: 0 }
+});
 
 export default Pair;
