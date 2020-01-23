@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Alert, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import GestureRecognizer from 'react-native-swipe-gestures';
 import Pair from '../Pair/Pair';
 
 const Game = ({ pairs, navigation }) => {
@@ -48,11 +49,13 @@ const Game = ({ pairs, navigation }) => {
   }
 
   return (
-    <View>
-      <Text>Timer:{timer}</Text>
-      <Text>Score:{index}/10</Text>
-      <Pair onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight} pair={pairs[index]} />
-    </View>
+    <GestureRecognizer onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
+      <View style={{ zIndex: 1 }}>
+        <Text>Timer:{timer}</Text>
+        <Text>Score:{index}/10</Text>
+        <Pair pair={pairs[index]} />
+      </View>
+    </GestureRecognizer>
   );
 };
 
